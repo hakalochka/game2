@@ -1,0 +1,255 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5q54xuocm0k3"]
+
+[ext_resource type="Script" path="res://scripts/shop.gd" id="1_5kvlb"]
+[ext_resource type="Texture2D" uid="uid://dsu3aaqi1lgcn" path="res://assets/sprites/sword.png" id="1_imq4t"]
+[ext_resource type="FontFile" uid="uid://c6fqxdlwfx6mi" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_xp4t6"]
+[ext_resource type="FontFile" uid="uid://cjvqvwtt2n4g7" path="res://assets/fonts/PixelOperator8.ttf" id="3_tmed8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax8nr"]
+bg_color = Color(0.666667, 0.52549, 0.376471, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npts5"]
+bg_color = Color(0.858824, 0.698039, 0.529412, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3jfv"]
+bg_color = Color(0.666667, 0.52549, 0.376471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0q7g"]
+bg_color = Color(0.858824, 0.698039, 0.529412, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+
+[node name="shop" type="Node2D"]
+script = ExtResource("1_5kvlb")
+
+[node name="background" type="Panel" parent="."]
+offset_left = 192.0
+offset_top = 72.0
+offset_right = 960.0
+offset_bottom = 584.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ax8nr")
+metadata/_edit_lock_ = true
+
+[node name="sword1" type="Panel" parent="."]
+offset_left = 272.0
+offset_top = 152.0
+offset_right = 496.0
+offset_bottom = 520.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_npts5")
+
+[node name="Sword" type="Sprite2D" parent="sword1"]
+position = Vector2(112, 128)
+scale = Vector2(7.35714, 7.35714)
+texture = ExtResource("1_imq4t")
+
+[node name="info" type="Label" parent="sword1"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 264.0
+offset_right = 154.0
+offset_bottom = 287.0
+theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_fonts/font = ExtResource("2_xp4t6")
+text = "Owned"
+
+[node name="equiped" type="Label" parent="sword1"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 303.0
+offset_right = 168.0
+offset_bottom = 327.0
+theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_fonts/font = ExtResource("2_xp4t6")
+text = "Equiped"
+
+[node name="dmg" type="Label" parent="sword1"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 240.0
+offset_right = 154.0
+offset_bottom = 263.0
+theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_fonts/font = ExtResource("3_tmed8")
+theme_override_font_sizes/font_size = 16
+text = "10 dmg"
+
+[node name="buy" type="Button" parent="sword1"]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 296.0
+offset_right = 160.0
+offset_bottom = 336.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tmed8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n3jfv")
+text = "Buy"
+icon_alignment = 1
+
+[node name="equip" type="Button" parent="sword1"]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 288.0
+offset_right = 160.0
+offset_bottom = 328.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tmed8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n3jfv")
+text = "Equip"
+
+[node name="sword2" type="Panel" parent="."]
+offset_left = 656.0
+offset_top = 152.0
+offset_right = 880.0
+offset_bottom = 520.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_npts5")
+
+[node name="Sword2" type="Sprite2D" parent="sword2"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(112, 128)
+scale = Vector2(7.35714, 7.35714)
+texture = ExtResource("1_imq4t")
+
+[node name="info2" type="Label" parent="sword2"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 263.0
+offset_right = 167.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_fonts/font = ExtResource("2_xp4t6")
+text = "10 coins"
+horizontal_alignment = 1
+
+[node name="equiped2" type="Label" parent="sword2"]
+visible = false
+layout_mode = 0
+offset_left = 59.0
+offset_top = 303.0
+offset_right = 167.0
+offset_bottom = 327.0
+theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_fonts/font = ExtResource("2_xp4t6")
+text = "Equiped"
+
+[node name="dmg2" type="Label" parent="sword2"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 240.0
+offset_right = 152.0
+offset_bottom = 263.0
+theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_fonts/font = ExtResource("3_tmed8")
+theme_override_font_sizes/font_size = 16
+text = "15 dmg"
+
+[node name="buy2" type="Button" parent="sword2"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 297.0
+offset_right = 160.0
+offset_bottom = 337.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tmed8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n3jfv")
+text = "Buy"
+
+[node name="equip2" type="Button" parent="sword2"]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 296.0
+offset_right = 160.0
+offset_bottom = 336.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tmed8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n3jfv")
+text = "Equip"
+
+[node name="close" type="Button" parent="."]
+offset_left = 891.0
+offset_top = 87.0
+offset_right = 946.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
+theme_override_fonts/font = ExtResource("3_tmed8")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_w0q7g")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_w0q7g")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_w0q7g")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_w0q7g")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_w0q7g")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_w0q7g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w0q7g")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_w0q7g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w0q7g")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_w0q7g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_w0q7g")
+text = "x"
+
+[connection signal="pressed" from="sword1/equip" to="." method="_on_equip_pressed"]
+[connection signal="pressed" from="sword2/buy2" to="." method="_on_buy_2_pressed"]
+[connection signal="pressed" from="sword2/equip2" to="." method="_on_equip_2_pressed"]
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
