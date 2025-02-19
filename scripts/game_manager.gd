@@ -18,11 +18,13 @@ var coin = 0
 @onready var shop_btn: Button = $UI/shop_btn
 
 func _ready() -> void:
-	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	await get_tree().process_frame  # Wait for nodes to load
+	
 
-	sword_equipped = true
-	sword2_equipped = false
-	axe_equipped = false
+	
+func _physics_process(delta: float) -> void:
+	open_shop()
 
 func add_point():
 	coin += 1
@@ -57,5 +59,13 @@ func _on_shop_btn_pressed() -> void:
 	get_node("UI/shop").show()
 	get_node("UI/shop_btn").hide()
 
-
 		
+func open_shop():
+	if Input.is_action_just_pressed("shop"):
+		if shop_ui and shop_btn:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			var viewport_size = get_viewport().get_visible_rect().size
+			Input.warp_mouse(viewport_size / 2)
+			shop_ui.show()
+			shop_btn.hide()
+	

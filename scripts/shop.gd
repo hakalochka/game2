@@ -6,6 +6,7 @@ extends Node2D
 func _on_close_pressed() -> void:
 	hide()
 	game_manager.get_node("UI/shop_btn").show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 func _on_buy_2_pressed() -> void:
