@@ -101,9 +101,10 @@ func updateAnimation():
 		lastAnimDirection = direction
 	
 	
-		
-	
 func _physics_process(delta: float) -> void:
+	if isDead:
+		velocity = Vector2.ZERO
+		return
 	handleInput()
 	updateAnimation()
 	
@@ -114,11 +115,12 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity.length() == 0:
 		animated_sprite.play("idle")
-	
-	if velocity.y < 0:
-		animated_sprite.play("run_back")
-	else: 
+	else:
 		animated_sprite.play("run")
+	#if velocity.y < 0:
+		#animated_sprite.play("run_back")
+	#else: 
+		#animated_sprite.play("run")
 
 	
 	move_and_slide()
@@ -139,8 +141,10 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if currentHealth <= 0: 
 		isDead = true
 		speed = 0
+		animated_sprite.play("death")
+		await animated_sprite.animation_finished
 		respawn_timer.start()
-		animation.play("death")
+		
 		
 	
 

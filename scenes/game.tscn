@@ -128,10 +128,6 @@ position = Vector2(-2, -128)
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_tgta5")
-sword_owned = null
-sword2_owned = null
-sword_equipped = null
-sword2_equipped = null
 
 [node name="UI" type="CanvasLayer" parent="GameManager"]
 
@@ -227,7 +223,7 @@ zoom = Vector2(4, 4)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="slime" parent="Enemies" instance=ExtResource("4_mxwuj")]
-position = Vector2(-219, -153)
+position = Vector2(-215, -169)
 
 [node name="slime2" parent="Enemies" instance=ExtResource("4_mxwuj")]
 position = Vector2(-45, -225)

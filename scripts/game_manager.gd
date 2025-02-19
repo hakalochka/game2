@@ -12,12 +12,16 @@ var coin = 0
 
 @onready var player: Player = get_node("/root/Game/Player")
 
+@onready var shop_ui: Node2D = $UI/shop
+@onready var shop_btn: Button = $UI/shop_btn
 
 func _ready() -> void:
-	# Initialize the sword equipment status
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	sword_equipped = true
 	sword2_equipped = false
+
+
 
 func add_point():
 	coin += 1
@@ -43,3 +47,6 @@ func equip_sword2():
 func _on_shop_btn_pressed() -> void:
 	get_node("UI/shop").show()
 	get_node("UI/shop_btn").hide()
+
+
+		
