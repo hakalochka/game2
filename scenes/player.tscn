@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://cel63ercqjlew"]
+[gd_scene load_steps=45 format=3 uid="uid://cel63ercqjlew"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1so26"]
 [ext_resource type="PackedScene" uid="uid://eafog5sb2yt3" path="res://scenes/sword.tscn" id="2_awx25"]
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="2_dwn7v"]
 [ext_resource type="Texture2D" uid="uid://dyl18gjjnksb4" path="res://assets/sprites/satiro-Sheet_v1.1.png" id="2_k4nhm"]
+[ext_resource type="PackedScene" uid="uid://bwno7xougr4ct" path="res://scenes/axe.tscn" id="4_fq7p7"]
 [ext_resource type="PackedScene" uid="uid://com48qcqhgydc" path="res://scenes/sword_2.tscn" id="5_tfy3g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qeodg"]
@@ -561,6 +562,9 @@ position = Vector2(4, -4)
 rotation = 2.0944
 script = ExtResource("2_dwn7v")
 
+[node name="axe" parent="Weapon" instance=ExtResource("4_fq7p7")]
+position = Vector2(0, -1)
+
 [node name="sword" parent="Weapon" instance=ExtResource("2_awx25")]
 z_index = -1
 position = Vector2(0, -1)
@@ -570,7 +574,7 @@ z_index = -1
 position = Vector2(0, -1)
 
 [node name="RespawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 
 [node name="dmgTimer" type="Timer" parent="."]
 wait_time = 0.3

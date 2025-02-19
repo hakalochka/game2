@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var sword: Area2D = $sword
 @onready var sword2: Area2D = $sword2
+@onready var axe: Area2D = $axe
 
 var weapon: Area2D
 
@@ -18,14 +19,21 @@ func enable():
 	if GameManager.sword_equipped:
 		sword.enable()
 		sword2.disable()
+		axe.disable()
 	elif GameManager.sword2_equipped:
 		sword2.enable()
 		sword.disable()
+		axe.disable()
+	elif GameManager.axe_equipped:
+		sword2.disable()
+		sword.disable()
+		axe.enable()
 
 func disable():
 	visible = false
 	sword.disable()
 	sword2.disable()
+	axe.disable()
 
 func swap_weapon(new_weapon: Area2D) -> void:
 	if weapon:

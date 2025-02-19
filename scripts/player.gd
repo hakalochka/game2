@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var weapon: Node2D = $Weapon
 @onready var sword: Area2D = $Weapon/sword
 @onready var sword2: Area2D = $Weapon/sword2
+@onready var axe: Area2D = $Weapon/axe
 
 @onready var game_manager: Node = %GameManager
 
@@ -41,6 +42,8 @@ func _ready() -> void:
 		equip_weapon("sword")
 	elif game_manager.sword2_equipped:
 		equip_weapon("sword2")
+	elif game_manager.axe_equipped:
+		equip_weapon("axe")
 
 func handleInput():
 	var moveDirection = Input.get_vector("left", "right", "up", "down")
@@ -173,11 +176,24 @@ func equip_weapon(weapon_name: String) -> void:
 	if weapon_name == "sword":
 		sword.show()
 		sword2.hide()
+		axe.hide()
 		game_manager.sword_equipped = true
 		game_manager.sword2_equipped = false
+		game_manager.axe_equipped = false
 		
 	elif weapon_name == "sword2":
 		sword.hide()
 		sword2.show()
+		axe.hide()
 		game_manager.sword_equipped = false
 		game_manager.sword2_equipped = true
+		game_manager.axe_equipped = false
+	
+	elif weapon_name == "axe":
+		sword.hide()
+		sword2.hide()
+		axe.show()
+		game_manager.sword_equipped = false
+		game_manager.sword2_equipped = false
+		game_manager.axe_equipped = true
+		
