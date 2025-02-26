@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var respawn_timer: Timer = $respawnTimer
 
 @export var speed: int = 25
+@export var direction: float = 0
 @export var player = null
 @export var stop_distance: float = 5
 
@@ -29,37 +30,37 @@ const DEFAULT_MODULATE = Color(1,1,1,1)
 
 func _ready() -> void:
 	spawn_position = global_position
-
+	animated_sprite.play("idle")
+	
 func updateAnimation(direction: Vector2):
 	if isDead: return
-	if direction.length() == 0:
-		if animated_sprite.animation != "idle":
-			animated_sprite.play("idle")
-	else:
+	if direction.length() != 0:
 		if animated_sprite.animation != "move":
 			animated_sprite.play("move")
+		
 	#if direction.length() == 0:
-		#animated_sprite.play("idle")
+		#if animated_sprite.animation != "idle":
+			#animated_sprite.play("idle")
 	#else:
-		#animated_sprite.play("move")
+		#if animated_sprite.animation != "move":
+			#animated_sprite.play("move")
 
 
 func _physics_process(delta: float) -> void:
 	
 	if isDead: return
 	
-	#if player:
-		## Update RayCast2D direction dynamically
-		#LOS.target_position = player.global_position - global_position
-		#LOS.force_raycast_update()  # Force an immediate update
-		#if has_clear_line_of_sight():
-			#var distance_to_player = global_position.distance_to(player.global_position)
-			#if distance_to_player > stop_distance:
-				#var direction = (player.global_position - global_position).normalized()
-				#if direction.length() > 0:
-					#global_position += direction * speed * delta
-				
-				#updateAnimation(direction)
+	if player:
+		# Update RayCast2D direction dynamically
+		LOS.target_position = player.global_position - global_position
+		LOS.force_raycast_update()  # Force an immediate update
+		if has_clear_line_of_sight():
+			var distance_to_player = global_position.distance_to(player.global_position)
+			if distance_to_player > stop_distance:
+				var direction = (player.global_position - global_position).normalized()
+				if direction.length() > 0:
+					global_position += direction * speed * delta
+				updateAnimation(direction)
 				
 	
 
@@ -87,6 +88,7 @@ func _on_player_check_body_entered(body: Node2D) -> void:
 
 func _on_player_check_body_exited(body: Node2D) -> void:
 	if body is Player: player = null
+	animated_sprite.play("idle")
 	
 func has_clear_line_of_sight() -> bool:
 	if not player: 
