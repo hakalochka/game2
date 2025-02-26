@@ -16,6 +16,7 @@ extends CharacterBody2D
 @export var coin_scene = preload("res://scenes/coin.tscn")
 @export var coin_drop_count: int = 2
 
+
 signal healthChanged
 
 var maxHealth: int = 30
@@ -47,20 +48,19 @@ func _physics_process(delta: float) -> void:
 	
 	if isDead: return
 	
-	if player:
-		# Update RayCast2D direction dynamically
-		LOS.target_position = player.global_position - global_position
-		LOS.force_raycast_update()  # Force an immediate update
-		if has_clear_line_of_sight():
-			var distance_to_player = global_position.distance_to(player.global_position)
-			if distance_to_player > stop_distance:
-				var direction = (player.global_position - global_position).normalized()
-				if direction.length() > 0:
-					global_position += direction * speed * delta
+	#if player:
+		## Update RayCast2D direction dynamically
+		#LOS.target_position = player.global_position - global_position
+		#LOS.force_raycast_update()  # Force an immediate update
+		#if has_clear_line_of_sight():
+			#var distance_to_player = global_position.distance_to(player.global_position)
+			#if distance_to_player > stop_distance:
+				#var direction = (player.global_position - global_position).normalized()
+				#if direction.length() > 0:
+					#global_position += direction * speed * delta
 				
-				updateAnimation(direction)
-				#global_position += direction * speed * delta
 				#updateAnimation(direction)
+				
 	
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:

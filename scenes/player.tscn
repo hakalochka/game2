@@ -570,7 +570,12 @@ wait_time = 0.3
 [node name="hpRegenTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="damageTimer" type="Timer" parent="."]
+wait_time = 0.8
+
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="hurtBox" to="." method="_on_hurt_box_area_exited"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="dmgTimer" to="." method="_on_dmg_timer_timeout"]
 [connection signal="timeout" from="hpRegenTimer" to="." method="_on_hp_regen_timer_timeout"]
+[connection signal="timeout" from="damageTimer" to="." method="_on_damage_timer_timeout"]

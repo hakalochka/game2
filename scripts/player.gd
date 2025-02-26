@@ -6,10 +6,13 @@ extends CharacterBody2D
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var hurt_box: Area2D = $hurtBox
 @export var attack_range: float = 60
+@export var isTakingDamage: bool = false
+@export var damage_sources = {}
 
 @onready var respawn_timer: Timer = $RespawnTimer
-@onready var dmg_timer: Timer = $dmgTimer
+@onready var dmg_timer: Timer = $dmgTimer #changing color on dmamged
 @onready var hp_regen_timer: Timer = $hpRegenTimer
+@onready var damage_timer: Timer = $damageTimer #damage over time
 
 @onready var weapon: Node2D = $Weapon
 @onready var sword: Area2D = $Weapon/sword
@@ -132,21 +135,24 @@ func _physics_process(delta: float) -> void:
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_attack"):
-		currentHealth -= 35
+		isTakingDamage = true
+		var damage = area.damage_given
+		damage_sources[area] = area.damage_given
+		currentHealth -= damage
+		if not damage_timer.is_stopped():
+			return 
+		print(currentHealth)
 		healthChanged.emit()
 
 		get_node("AnimatedSprite2D").modulate = Color(1, 0.3, 0.3)
 		dmg_timer.start()
+		damage_timer.start()
 		
 		hp_regen_timer.stop()
 		hp_regen_timer.start(2.0) 
 	
 	if currentHealth <= 0: 
-		isDead = true
-		speed = 0
-		animated_sprite.play("death")
-		await animated_sprite.animation_finished
-		respawn_timer.start()
+		die()
 		
 		
 	
@@ -166,7 +172,9 @@ func _on_dmg_timer_timeout() -> void:
 	get_node("AnimatedSprite2D").modulate = DEFAULT_MODULATE
 
 
+
 func _on_hp_regen_timer_timeout() -> void:
+	if isDead: return
 	if currentHealth < maxHealth:
 		currentHealth += health_regen_amount
 		healthChanged.emit()
@@ -197,3 +205,41 @@ func equip_weapon(weapon_name: String) -> void:
 		game_manager.sword2_equipped = false
 		game_manager.axe_equipped = true
 		
+
+func die():
+	isDead = true
+	isTakingDamage = false
+	damage_sources.clear()
+	damage_timer.stop()
+	speed = 0
+	animated_sprite.play("death")
+	await animated_sprite.animation_finished
+	respawn_timer.start()
+
+func _on_damage_timer_timeout() -> void:
+	if isTakingDamage:
+		var total_damage = 0
+		for damage in damage_sources.values():
+			total_damage += damage  # Sum damage from all attackers
+			get_node("AnimatedSprite2D").modulate = Color(1, 0.3, 0.3)
+			dmg_timer.start()
+			
+			hp_regen_timer.stop()
+			hp_regen_timer.start(2.0) 
+		
+		currentHealth -= total_damage
+		print(currentHealth)
+		healthChanged.emit()
+
+		if currentHealth <= 0:
+			die()
+
+
+func _on_hurt_box_area_exited(area: Area2D) -> void:
+	if area.is_in_group("enemy_attack"):
+		if area in damage_sources:
+			damage_sources.erase(area)
+		if damage_sources.size() == 0:  # Only stop timer if no enemies remain
+			damage_timer.stop()
+			isTakingDamage = false
+		get_node("AnimatedSprite2D").modulate = Color(1, 1, 1)  # Reset color

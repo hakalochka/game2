@@ -223,12 +223,12 @@ zoom = Vector2(4, 4)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="slime2" parent="Enemies" instance=ExtResource("4_mxwuj")]
-position = Vector2(-104, -218)
+position = Vector2(-193, -141)
 
 [node name="slime3" parent="Enemies" instance=ExtResource("4_mxwuj")]
 position = Vector2(-52, -108)
 
 [node name="slime4" parent="Enemies" instance=ExtResource("4_mxwuj")]
-position = Vector2(-211, -149)
+position = Vector2(-102, -219)
 
 [connection signal="pressed" from="GameManager/UI/shop_btn" to="GameManager" method="_on_shop_btn_pressed"]

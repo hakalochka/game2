@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://b2tgjxgf8yj0e"]
+[gd_scene load_steps=32 format=3 uid="uid://b2tgjxgf8yj0e"]
 
 [ext_resource type="Texture2D" uid="uid://dwg0iigy3hru4" path="res://assets/sprites/slime.png" id="1_g7kli"]
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_npl3c"]
 [ext_resource type="Texture2D" uid="uid://chxvt3oyvlikd" path="res://assets/sprites/slime2.png" id="3_afe3r"]
 [ext_resource type="PackedScene" uid="uid://baa0axn6bm417" path="res://scenes/hpBar.tscn" id="3_qll7w"]
+[ext_resource type="Script" path="res://scripts/slime_hit_box.gd" id="4_cymi8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hedjn"]
 atlas = ExtResource("3_afe3r")
@@ -353,6 +354,7 @@ shape = SubResource("CapsuleShape2D_ebih5")
 [node name="hitBox" type="Area2D" parent="." groups=["enemy_attack"]]
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("4_cymi8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 position = Vector2(0, -6)
