@@ -136,10 +136,10 @@ z_index = 5
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -268.0
-offset_top = 12.0
-offset_right = -10.0
-offset_bottom = 45.0
+offset_left = -316.0
+offset_top = 10.0
+offset_right = -58.0
+offset_bottom = 43.0
 grow_horizontal = 0
 scale = Vector2(1, 1.32)
 nine_patch_stretch = true
@@ -149,7 +149,7 @@ script = ExtResource("6_qluub")
 player = NodePath("../../../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="GameManager/UI"]
-position = Vector2(37.9998, 35)
+position = Vector2(77.6251, 37.6251)
 scale = Vector2(6.1786, 6.1786)
 texture = ExtResource("9_nrgv6")
 
@@ -157,20 +157,20 @@ texture = ExtResource("9_nrgv6")
 visible = false
 
 [node name="coins" type="Label" parent="GameManager/UI"]
-offset_left = 63.0
-offset_top = 19.0
-offset_right = 127.0
-offset_bottom = 51.0
+offset_left = 102.625
+offset_top = 21.6251
+offset_right = 166.625
+offset_bottom = 53.6251
 theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
 theme_override_fonts/font = ExtResource("8_ys2nx")
 theme_override_font_sizes/font_size = 32
 text = ": 0"
 
 [node name="shop_btn" type="Button" parent="GameManager/UI"]
-offset_left = 991.0
-offset_top = 560.0
-offset_right = 1120.0
-offset_bottom = 619.0
+offset_left = 968.0
+offset_top = 576.0
+offset_right = 1097.0
+offset_bottom = 635.0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -213,7 +213,7 @@ layer_2/tile_data = PackedInt32Array(131071, 393217, 3, 65535, 458753, 3, 0, 458
 
 [node name="Player" parent="." instance=ExtResource("1_sdlff")]
 unique_name_in_owner = true
-position = Vector2(-216, 103)
+position = Vector2(-183, 69)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -6)
@@ -222,13 +222,13 @@ zoom = Vector2(4, 4)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="slime" parent="Enemies" instance=ExtResource("4_mxwuj")]
-position = Vector2(-215, -169)
-
 [node name="slime2" parent="Enemies" instance=ExtResource("4_mxwuj")]
-position = Vector2(-45, -225)
+position = Vector2(-104, -218)
 
 [node name="slime3" parent="Enemies" instance=ExtResource("4_mxwuj")]
 position = Vector2(-52, -108)
+
+[node name="slime4" parent="Enemies" instance=ExtResource("4_mxwuj")]
+position = Vector2(-211, -149)
 
 [connection signal="pressed" from="GameManager/UI/shop_btn" to="GameManager" method="_on_shop_btn_pressed"]

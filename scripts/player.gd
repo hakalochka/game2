@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@export var speed: int = 45
+@export var speed: int = 55
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var hurt_box: Area2D = $hurtBox
@@ -132,7 +132,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_attack"):
-		currentHealth -= 30
+		currentHealth -= 35
 		healthChanged.emit()
 
 		get_node("AnimatedSprite2D").modulate = Color(1, 0.3, 0.3)

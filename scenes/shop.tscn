@@ -67,13 +67,13 @@ text = "Owned"
 
 [node name="equiped" type="Label" parent="sword1"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 303.0
-offset_right = 168.0
-offset_bottom = 327.0
+offset_left = 50.0
+offset_top = 304.0
+offset_right = 174.0
+offset_bottom = 328.0
 theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
 theme_override_fonts/font = ExtResource("2_xp4t6")
-text = "Equiped"
+text = "Equipped"
 
 [node name="dmg" type="Label" parent="sword1"]
 layout_mode = 0
@@ -150,10 +150,10 @@ texture = ExtResource("1_imq4t")
 
 [node name="info2" type="Label" parent="sword2"]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 263.0
-offset_right = 167.0
-offset_bottom = 286.0
+offset_left = 58.0
+offset_top = 264.0
+offset_right = 174.0
+offset_bottom = 287.0
 theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
 theme_override_fonts/font = ExtResource("2_xp4t6")
 text = "10 coins"
@@ -162,13 +162,13 @@ horizontal_alignment = 1
 [node name="equiped2" type="Label" parent="sword2"]
 visible = false
 layout_mode = 0
-offset_left = 59.0
+offset_left = 52.0
 offset_top = 303.0
-offset_right = 167.0
+offset_right = 176.0
 offset_bottom = 327.0
 theme_override_colors/font_color = Color(0.109804, 0.0705882, 0.0470588, 1)
 theme_override_fonts/font = ExtResource("2_xp4t6")
-text = "Equiped"
+text = "Equipped"
 
 [node name="dmg2" type="Label" parent="sword2"]
 layout_mode = 0
