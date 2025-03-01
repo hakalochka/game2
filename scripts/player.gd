@@ -39,7 +39,7 @@ var spawn_position: Vector2
 
 func _ready() -> void:
 	spawn_position = global_position
-	hp_regen_timer.timeout.connect(_on_hp_regen_timer_timeout)
+	#hp_regen_timer.timeout.connect(_on_hp_regen_timer_timeout)
 	weapon.disable()
 	if game_manager.sword_equipped:
 		equip_weapon("sword")
@@ -107,7 +107,7 @@ func updateAnimation():
 		lastAnimDirection = direction
 	
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if isDead:
 		velocity = Vector2.ZERO
 		return

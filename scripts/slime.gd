@@ -10,12 +10,12 @@ extends CharacterBody2D
 @onready var respawn_timer: Timer = $respawnTimer
 
 @export var speed: int = 25
-@export var direction: float = 0
+#@export var direction: float = 0
 @export var player = null
 @export var stop_distance: float = 5
 
 @export var coin_scene = preload("res://scenes/coin.tscn")
-@export var coin_drop_count: int = 2
+#@export var coin_drop_count: int = 2
 
 
 signal healthChanged
@@ -73,12 +73,15 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		dmg_timer.start()
 		
 		if currentHealth <= 0:
-			isDead = true
-			drop_coins()
-			animation.play("death")
-			await animation.animation_finished  
-			hide_enemy()
-			respawn_timer.start()
+			die()
+
+func die():
+	isDead = true
+	drop_coins()
+	animation.play("death") #!!!!
+	await animation.animation_finished  
+	call_deferred("hide_enemy")
+	respawn_timer.start()
 
 func _on_dmg_timer_timeout() -> void:
 	get_node("AnimatedSprite2D").modulate = DEFAULT_MODULATE
@@ -102,7 +105,7 @@ func drop_coins():
 	
 	for i in range(coin_drop_count):
 		var coin = coin_scene.instantiate()
-		get_tree().get_root().add_child(coin)
+		call_deferred("add_coin_to_scene", coin)
 		
 		var game_manager = %GameManager
 		if game_manager:
@@ -111,7 +114,8 @@ func drop_coins():
 		var random_offset = Vector2(randf_range(-7, 7), randf_range(-7, 7))
 		coin.global_position = global_position + random_offset
 
-
+func add_coin_to_scene(coin):
+	get_tree().get_root().add_child(coin)
 
 func _on_respawn_timer_timeout() -> void:
 	isDead = false

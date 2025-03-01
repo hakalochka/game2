@@ -1,6 +1,6 @@
 extends Node
 
-@onready var coins: Label = $UI/coins
+@onready var coins: Label = $/root/Game/GameManager/UI/coins
 
 var coin = 0
 
@@ -14,16 +14,18 @@ var coin = 0
 
 @onready var player: Player = get_node("/root/Game/Player")
 
-@onready var shop_ui: Node2D = $UI/shop
-@onready var shop_btn: Button = $UI/shop_btn
+@onready var shop_ui: Node2D = $/root/Game/GameManager/UI/shop
+@onready var shop_btn: Button = $/root/Game/GameManager/UI/shop_btn
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	await get_tree().process_frame  # Wait for nodes to load
+	coin_count()
+	print(get_path())
 	
 
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	open_shop()
 
 func add_point():
@@ -31,7 +33,10 @@ func add_point():
 	coin_count()
 
 func coin_count():
-	coins.text = ": " + str(coin)
+	if coins == null:
+		print("0")
+	else:
+		coins.text = ": " + str(coin)
 
 # Functions to change equipment
 func equip_sword():
