@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var player_check: Area2D = $playerCheck
 @onready var LOS: RayCast2D = $lineOfSight
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var damage_number_origin: Node2D = $damageNumberOrigin
 
 @onready var dmg_timer: Timer = $dmgTimer
 @onready var respawn_timer: Timer = $respawnTimer
@@ -69,6 +70,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		var damage = area.damage
 		currentHealth -= damage
 		healthChanged.emit()
+		DamageNumbers.display_number(damage, damage_number_origin.global_position)
 		get_node("AnimatedSprite2D").modulate = Color(1, 0.3, 0.3)
 		dmg_timer.start()
 		

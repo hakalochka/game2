@@ -381,6 +381,9 @@ wait_time = 0.3
 [node name="respawnTimer" type="Timer" parent="."]
 wait_time = 10.0
 
+[node name="damageNumberOrigin" type="Node2D" parent="."]
+position = Vector2(0, -11)
+
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="playerCheck" to="." method="_on_player_check_area_entered"]
 [connection signal="area_exited" from="playerCheck" to="." method="_on_player_check_area_exited"]
