@@ -80,10 +80,14 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 func die():
 	isDead = true
 	drop_coins()
-	animation.play("death") #!!!!
+	#animation.play("death") #!!!!
+	call_deferred("_play_death_animation")
 	await animation.animation_finished  
 	call_deferred("hide_enemy")
 	respawn_timer.start()
+
+func _play_death_animation():
+	animation.play("death")  
 
 func _on_dmg_timer_timeout() -> void:
 	get_node("AnimatedSprite2D").modulate = DEFAULT_MODULATE
