@@ -15,7 +15,7 @@ This project is a part of my learning process. The game is being built from scra
 
 A simple 2D pixel art RPG where you can explore a small world, interact with characters, and complete basic quests. 
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - Engine: Godot
 - Language: GDScript
